@@ -1,0 +1,54 @@
+2021-03-19 19:48:09 Error: [RuntimeException] Your database does not have any tables. in C:\wamp\www\copassa\vendor\cakephp\bake\src\Utility\TableScanner.php on line 68
+Stack Trace:
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:1060
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:191
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:122
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:98
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:81
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\AllCommand.php:115
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Console\BaseCommand.php:179
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Console\CommandRunner.php:336
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Console\CommandRunner.php:172
+- C:\wamp\www\copassa\bin\cake.php:12
+
+
+
+2022-01-19 17:44:33 Error: [Cake\Database\Exception\DatabaseException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'copassa_app.businesse' doesn't exist in C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 142
+Stack Trace:
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:100
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php:84
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\ORM\Table.php:513
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\ORM\Table.php:653
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:199
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:122
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:98
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:81
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\AllCommand.php:115
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Console\BaseCommand.php:179
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Console\CommandRunner.php:336
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Console\CommandRunner.php:172
+- C:\wamp\www\copassa\bin\cake.php:12
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'copassa_app.businesse' doesn't exist in C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php:39
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Database\Connection.php:310
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Database\Connection.php:313
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:140
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:100
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php:84
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\ORM\Table.php:513
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\ORM\Table.php:653
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:199
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:122
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:98
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\ModelCommand.php:81
+- C:\wamp\www\copassa\vendor\cakephp\bake\src\Command\AllCommand.php:115
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Console\BaseCommand.php:179
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Console\CommandRunner.php:336
+- C:\wamp\www\copassa\vendor\cakephp\cakephp\src\Console\CommandRunner.php:172
+- C:\wamp\www\copassa\bin\cake.php:12
+
+
+
