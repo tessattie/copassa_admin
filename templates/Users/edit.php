@@ -31,6 +31,7 @@
         </div>
     <div class="panel-body articles-container">       
             <?= $this->Form->create($user) ?>
+            <div class="row">
                 <div class="col-md-4"><?= $this->Form->control('name', array('class' => 'form-control', "label" => "Name *", "placeholder" => "Nom")); ?></div>
                 <div class="col-md-4"><?= $this->Form->control('role_id', array('class' => 'form-control', 'options' => $roles, "label" => "Access *", "value" => 1, "multiple" => false, 'required' => true, 'style' => "height:46px")); ?></div>
                 <div class="col-md-4"><?= $this->Form->control('tenant_id', array('class' => 'form-control', 'options' => $tenants, "label" => "Agent *", "value" => 1, "multiple" => false, 'required' => true, 'style' => "height:46px")); ?></div>
@@ -43,6 +44,10 @@
                     <div class="col-md-4"><?= $this->Form->control('status', array('class' => 'form-control', "options" => $status, 'style' => "height:46px", "label" => "Status *", "value" => 1)); ?></div>
     
                 </div>
+
+                <div class="row">
+                    <div class="col-md-12"><?= $this->Form->button(__('Update'), array('class'=>'btn btn-success', "style"=>"margin-top:25px;float:right")) ?></div>
+                </div>  
 
 
             <?= $this->Form->end() ?>

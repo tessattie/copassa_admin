@@ -74,7 +74,8 @@ class UsersController extends AppController
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $roles = $this->Users->Roles->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'roles'));
+        $tenants = $this->Users->Tenants->find('list', ['order' => ['full_name ASC']]);
+        $this->set(compact('user', 'roles', 'tenants'));
     }
 
 
