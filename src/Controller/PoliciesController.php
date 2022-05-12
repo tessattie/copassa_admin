@@ -24,8 +24,9 @@ class PoliciesController extends AppController
     public function update($policy){
         ini_set("memory_limit","-1");
         $this->loadModel("Prenewals");
-        $renewal_year_start = date("Y-m-d");
-        $renewal_year_end = date("Y-m-d", strtotime("+3 months", strtotime($renewal_year_start))); 
+        $renewal_year_start = date("Y-m-01");
+        $renewal_year_use = date("Y-m-d");
+        $renewal_year_end = date("Y-m-d", strtotime("+3 months", strtotime($renewal_year_use))); 
         // set the renewals we have to create 
         $renewal_status = $this->Prenewals->find("all", array("conditions" => array("policy_id" => $policy->id), "order" => array("renewal_date DESC")))->first();
         if(empty($renewal_status) || $renewal_status->policy_status == 1){
