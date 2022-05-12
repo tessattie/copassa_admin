@@ -24,10 +24,10 @@
             <table class="table table-stripped datatable">
                 <thead> 
                     <th>Name</th>
+                    <th class="text-center">Company</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">Phone</th>
                     <th class="text-center">ID</th>
-                    <th class="text-center">Company</th>
                     <th class="text-center">Status</th>
                     <th class="text-center"></th>
                 </thead>
@@ -35,10 +35,10 @@
             <?php foreach($tenants as $tenant) : ?>
                 <tr>
                     <td><?= $tenant->full_name ?></td>
+                    <td class="text-center"><?= $tenant->company ?></td>
                     <td class="text-center"><?= $tenant->email ?></td>
                     <td class="text-center"><?= $tenant->phone ?></td>
                     <td class="text-center"><?= $tenant->identification ?></td>
-                    <td class="text-center"><?= $tenant->company ?></td>
                     <td class="text-center"><?= $status[$tenant->status] ?></td>
                     <td class="text-right">
                         <a href="<?= ROOT_DIREC ?>/tenants/edit/<?= $tenant->id ?>" style="font-size:1.3em!important;"><span class="fa fa-xl fa-pencil color-blue"></span></a>

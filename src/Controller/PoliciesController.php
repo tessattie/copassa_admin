@@ -13,55 +13,49 @@ use FPDF;
  */
 class PoliciesController extends AppController
 {
-
-
-
-    public function cronpoliciesforrenewal(){
-       $policies = $this->Policies->find("all");  
+    public function renew(){
+       $policies = $this->Policies->find("all", array("conditions" => array()));  
        foreach($policies as $policy){
-        $this->setrenewals($policy);
+            $this->update($policy);
        }
-       die("done with setting renewals");
+
+       die("done with renewals");
     }
-
-
-    public function setrenewals($policy, $current_year = false){
+    public function update($policy){
         ini_set("memory_limit","-1");
         $this->loadModel("Prenewals");
-        if($current_year == false){
-            $current_year = date("Y");
-        }
+        $renewal_year_start = date("Y-m-d");
+        $renewal_year_end = date("Y-m-d", strtotime("+3 months", strtotime($renewal_year_start))); 
         // set the renewals we have to create 
-        $renewal_status = $this->Prenewals->find("all", array("conditions" => array("policy_id" => $policy->id), "order" => array("renewal_date")))->first();
-        if(empty($renewal_status) || $renewal_status->policy_status = 1){
+        $renewal_status = $this->Prenewals->find("all", array("conditions" => array("policy_id" => $policy->id), "order" => array("renewal_date DESC")))->first();
+        if(empty($renewal_status) || $renewal_status->policy_status == 1){
             $mode = $policy->mode; 
             $effective_date = $policy->effective_date->i18nFormat('yyyy-MM-dd');
             $renewals = [];
-            $next_renewal =  date("Y-m-d", strtotime("+".$mode." months", strtotime($effective_date)));
-            while($next_renewal  <= $current_year."-12-31"){
+            $next_renewal =  $effective_date;
+            while($next_renewal  < $renewal_year_end){
                 $year = date("Y", strtotime($next_renewal)); 
-                if($year == $current_year){
+                if($next_renewal  <= $renewal_year_end && $next_renewal >= $renewal_year_start){
                     array_push($renewals, $next_renewal);
                 }
                 $next_renewal =  date("Y-m-d", strtotime("+".$mode." months", strtotime($next_renewal)));
             }
 
+
             foreach($renewals as $renewal){
-                if(date("Y-m-d") <= $renewal){
-                    $renewals = $this->Prenewals->find("all", array("conditions" => array("renewal_date" => $renewal, "policy_id" => $policy->id)));
-                    if($renewals->count() == 0){
-                        // create renewal
-                        $prenewal = $this->Prenewals->newEmptyEntity(); 
-                        $prenewal->renewal_date = $renewal; 
-                        $prenewal->policy_id = $policy->id; 
-                        $prenewal->premium = $policy->premium; 
-                        $prenewal->fee = $policy->fee; 
-                        $prenewal->tenant_id = $policy->tenant_id;
-                        $prenewal->policy_status = 1; 
-                        $prenewal->status = 1;
-                        // debug($prenewal); die();
-                        $this->Prenewals->save($prenewal);
-                    }
+                $renewals = $this->Prenewals->find("all", array("conditions" => array("renewal_date" => $renewal, "policy_id" => $policy->id)));
+                if($renewals->count() == 0){
+                    // create renewal
+                    $prenewal = $this->Prenewals->newEmptyEntity(); 
+                    $prenewal->renewal_date = $renewal; 
+                    $prenewal->policy_id = $policy->id; 
+                    $prenewal->premium = $policy->premium; 
+                    $prenewal->fee = $policy->fee; 
+                    $prenewal->tenant_id = $policy->tenant_id;
+                    $prenewal->policy_status = 1; 
+                    $prenewal->status = 1;
+                    // debug($prenewal); die();
+                    $this->Prenewals->save($prenewal);
                 }
             }
         }

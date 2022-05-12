@@ -55,7 +55,9 @@ class UsersTable extends Table
 
         $this->belongsTo('Roles', [
             'foreignKey' => 'role_id',
-            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('Tenants', [
+            'foreignKey' => 'tenant_id',
         ]);
         $this->hasMany('Companies', [
             'foreignKey' => 'user_id',

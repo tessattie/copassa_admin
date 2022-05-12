@@ -19,7 +19,7 @@ class UsersController extends AppController
     public function index()
     {
         $this->savelog(200, "Accessed users page", 1, 3, "", "");
-        $users = $this->Users->find("all", array('order' => array('Users.name ASC')))->contain(['Roles']);
+        $users = $this->Users->find("all", array('order' => array('Users.name ASC')))->contain(['Roles', 'Tenants']);
         $this->set(compact('users'));
     }
 
