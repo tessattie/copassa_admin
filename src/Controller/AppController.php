@@ -95,6 +95,7 @@ class AppController extends Controller
 
     public function beforeFilter(EventInterface $event){
 
+        $this->Auth->allow(['controller' => 'Policies', 'action' => 'renew']);
         $this->session = $this->getRequest()->getSession();
         if($this->Auth->user()){
             $year = date('Y');

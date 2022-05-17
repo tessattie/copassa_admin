@@ -21,6 +21,7 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\Event\EventInterface;
 
 /**
  * Static content controller
@@ -31,6 +32,10 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+
+    public function beforeFilter(EventInterface $event) {
+        parent::beforeFilter($event);
+    }
     /**
      * Displays a view
      *
